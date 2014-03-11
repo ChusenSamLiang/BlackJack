@@ -10,46 +10,50 @@
 
 @implementation Card
 
-@synthesize suit = aSuit, cardNumber = aCardNumber;
+@synthesize suit = _suit, cardNumber = _cardNumber;
 
--(id) initCardNumber:(NSInteger) _cardNumber suit:(Suit) _suit{
+-(id) initCardNumber:(NSInteger) cardNumber suit:(Suit) suit{
     
     if( self = [super init]){
         
-        aSuit = _suit;
-        aCardNumber = _cardNumber;
+        _suit = suit;
+        _cardNumber = cardNumber;
     }
     
     return self;
 }
 
+-(NSString *) filename{
+    return [NSString stringWithFormat:@"%@%02d.gif" , [self getSuit] , [self cardNumber] ];
+}
+
 -(NSInteger) pipValue {
     
-    if (aCardNumber >= 10) {
+    if (_cardNumber >= 10) {
         return (10);
     }
-    else if (aCardNumber == 1){
+    else if (_cardNumber == 1){
         return (11);
     }
     else{
-        return (aCardNumber);
+        return (_cardNumber);
     }
 }
 
 -(NSString *) getSuit{
     
-    switch (aSuit) {
+    switch (_suit) {
         case Spades:
-            return @"Spades";
+            return @"spade";
             break;
         case Hearts:
-            return @"Hearts";
+            return @"heart";
             break;
         case Clubs:
-            return @"Clubs";
+            return @"club";
             break;
         case Diamonds:
-            return @"Diamonds";
+            return @"diamond";
             break;
             
         default:
@@ -60,7 +64,7 @@
 
 -(NSString *) getNumber{
     
-    switch (aCardNumber) {
+    switch (_cardNumber) {
         case 1:
             return @"Ace";
             break;
@@ -75,14 +79,11 @@
             break;
             
         default:
-            return [NSString stringWithFormat:@"%ld", (long)aCardNumber];
+            return [NSString stringWithFormat:@"%ld", (long)_cardNumber];
             break;
     }
 }
 
--(NSString *) description {
-    return [NSString stringWithFormat:@"%@%@ (pipValue = %ld)", [self getSuit] , [self getNumber] , (long)[self pipValue]];
-}
 
 
 @end

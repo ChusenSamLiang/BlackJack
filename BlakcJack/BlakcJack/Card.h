@@ -24,4 +24,6 @@ typedef enum{
 
 -(NSInteger) pipValue;
 
+-(NSString *) filename;
+
 @end

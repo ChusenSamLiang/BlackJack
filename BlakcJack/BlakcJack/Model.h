@@ -22,5 +22,8 @@
 
 
 -(void) setup;
++(Model *) getModel;
+-(void) playerDraw;
+-(void) dealerDraw;
 
 @end

@@ -18,5 +18,6 @@
 -(void) add:(Card *) card;
 -(NSInteger) getPipValue;
 -(NSInteger) countHand;
+-(Card *) getCardAtIndex:(NSInteger) index;
 
 @end

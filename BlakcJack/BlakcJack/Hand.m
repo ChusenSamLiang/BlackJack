@@ -34,8 +34,9 @@
     [self.inHand addObject:card];
 }
 
--(NSString *) description{
-    return [NSString stringWithFormat:@"%@",self.inHand];
+
+-(Card *) getCardAtIndex:(NSInteger)index{
+    return ([self.inHand objectAtIndex:index]);
 }
 
 

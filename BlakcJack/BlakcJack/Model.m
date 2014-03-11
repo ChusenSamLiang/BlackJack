@@ -15,6 +15,7 @@
 @synthesize player = _player;
 @synthesize dealer = _dealer;
 @synthesize deck = _deck;
+static Model* bjModel = nil;
 
 -(id) init{
     if ((self = [super init])) {
@@ -25,17 +26,25 @@
     return (self);
 }
 
--(void) setup{
-    
-    //deal....draw... initial cards and setups of a game
-    [_player add:[_deck draw]];
-    [_dealer add:[_deck draw]];
-    [_player add:[_deck draw]];
-    [_dealer add:[_deck draw]];
-    
-   // NSLog([NSString stringWithFormat:@"Player:%@", _player.description]);
-   // NSLog([NSString stringWithFormat:@"Dealer:%@", _dealer.description]);
++(Model *) getModel{
+    if (bjModel == nil) {
+        bjModel = [[Model alloc] init];
+    }
+    return bjModel;
+}
 
+-(void)dealerDraw{
+    [_dealer add:[_deck draw]];
+}
+-(void)playerDraw{
+    [_player add:[_deck draw]];
+}
+
+-(void) setup{
+    //deal....draw... initial cards and setups of a game
+    [self dealerDraw];
+    [self playerDraw];
+    [self playerDraw];
     
 }
 

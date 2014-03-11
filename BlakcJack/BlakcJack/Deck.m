@@ -15,8 +15,8 @@
     
     if (self = [super init]) {
         cards = [[NSMutableArray alloc] init];
-        for (int suit = 1; suit <= 3; suit++) {
-            for (int cardNum = 0 ; cardNum <= 13; cardNum++) {
+        for (int suit = 0; suit <= 3; suit++) {
+            for (int cardNum = 1 ; cardNum <= 13; cardNum++) {
                 [cards addObject:[[Card alloc] initCardNumber:cardNum suit:suit]];
             }
         }
@@ -45,10 +45,6 @@
         NSUInteger n = (arc4random() % rnd) + 1;
         [cards exchangeObjectAtIndex:i withObjectAtIndex:n];
     }
-}
-
--(NSString *) description{
-    return [NSString stringWithFormat:@"Deck : %@", cards];
 }
 
 
